@@ -1,0 +1,5 @@
+name: pytorch
+channels:
+  - defaults
+prefix: /home/anu_u7034818/.conda/envs/pytorch
+
