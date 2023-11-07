@@ -123,17 +123,19 @@ def checkpoint2model(checkpoint, key='gen_state_dict'):
     # del state_dict['regressor.mean_theta']
     return state_dict
 
-
+# ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
 def get_optimizer(model, optim_type, lr, weight_decay, momentum):
     if optim_type in ['sgd', 'SGD']:
         opt = torch.optim.SGD(lr=lr, params=model.parameters(), momentum=momentum)
     elif optim_type in ['Adam', 'adam', 'ADAM']:
         opt = torch.optim.Adam(lr=lr, params=model.parameters(), weight_decay=weight_decay)
+    # Added new optimizer AdamW for Transformer Models
     elif optim_type in ['AdamW', 'adamw', 'ADAMW']:
         opt = torch.optim.AdamW(model.parameters(), lr=lr, betas=(0.9, 0.98), eps=1e-9, weight_decay=1e-4)
     else:
         raise ModuleNotFoundError
     return opt
+# ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
 
 def create_logger(logdir, phase='train'):

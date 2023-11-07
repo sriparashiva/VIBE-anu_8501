@@ -79,9 +79,17 @@ class MotionDiscriminator(nn.Module):
             
         return output
 
-    
+# ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #    
 class PositionalEncoding(nn.Module):
     def __init__(self, d_model, dropout=0.1, max_len=5000):
+        """
+        Initializes the PositionalEncoding object.
+
+        Args:
+            d_model (int): The dimensionality of the input.
+            dropout (float, optional): The dropout rate. Defaults to 0.1.
+            max_len (int, optional): The maximum length of the positional encoding. Defaults to 5000.
+        """
         super(PositionalEncoding, self).__init__()
         self.dropout = nn.Dropout(p=dropout)
 
@@ -102,6 +110,15 @@ class PositionalEncoding(nn.Module):
         self.register_buffer('pe', pe)
 
     def forward(self, x):
+        """
+        Adds the positional encoding to the input tensor and returns the result.
+
+        Parameters:
+            x (torch.Tensor): The input tensor.
+
+        Returns:
+            torch.Tensor: The tensor after adding the positional encoding.
+        """
         x = x + self.pe[:x.size(0), :]
         return x
 
@@ -117,6 +134,21 @@ class MotionDiscriminator_Transformer(nn.Module):
              num_layers=2,
              seqlen=16,
              dropout=0.3):
+        """
+        Initializes the MotionDiscriminator_Transformer class.
+
+        Args:
+            input_size (int): The size of the input.
+            output_size (int, optional): The size of the output. Defaults to 1.
+            dim_feedforward (int, optional): The size of the feedforward layer. Defaults to 1024.
+            attention_size (int, optional): The size of the attention layer. Defaults to 1024.
+            attention_layers (int, optional): The number of attention layers. Defaults to 1.
+            attention_dropout (float, optional): The dropout rate for the attention layer. Defaults to 0.5.
+            nhead (int, optional): The number of attention heads. Defaults to 3.
+            num_layers (int, optional): The number of layers. Defaults to 2.
+            seqlen (int, optional): The length of the sequence. Defaults to 16.
+            dropout (float, optional): The dropout rate. Defaults to 0.3.
+        """
 
         super(MotionDiscriminator_Transformer, self).__init__()
         self.input_size = input_size
@@ -148,6 +180,20 @@ class MotionDiscriminator_Transformer(nn.Module):
         self._init_weights()
         
     def _init_weights(self):
+        """
+        Initializes the weights of the transformer encoder.
+
+        This function iterates over the parameters of the transformer encoder and
+        initializes them using the Xavier uniform initialization method with a gain
+        calculated using the 'relu' activation function. Biases are initialized to
+        zero.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+        """
         for p in self.transformer_encoder.parameters():
             if p.dim() > 1:
                 nn.init.xavier_uniform_(p, gain=nn.init.calculate_gain('relu'))
@@ -157,6 +203,15 @@ class MotionDiscriminator_Transformer(nn.Module):
                 nn.init.constant_(p, 0)
 
     def forward(self, x):
+        """
+        Forward pass of the model.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (NTF) where N is the batch size, T is the sequence length, and F is the number of features.
+
+        Returns:
+            torch.Tensor: Output tensor of shape (NTF) after passing through the model.
+        """
         # x: NTF -> x: TNF (sequence length first for transformer)
         x = x.permute(1, 0, 2)
 
@@ -166,12 +221,18 @@ class MotionDiscriminator_Transformer(nn.Module):
         # Pass through transformer encoder
         outputs = self.transformer_encoder(x)
         
+        # Pass through feed forward network
         outputs = F.gelu(self.feed_forward(outputs))
         
+        # x: TNF -> x: NTF
         outputs = outputs.permute(1, 0, 2)
         
+        # Pool using self attention
         y, attentions = self.attention(outputs)
         
+        # Pass through linear layer
         output = self.fc(y)
 
         return output
+    
+# ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #

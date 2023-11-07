@@ -84,7 +84,9 @@ cfg.TRAIN.MOT_DISCR.ATT.DROPOUT = 0.1
 cfg.DATASET = CN()
 cfg.DATASET.SEQLEN = 20
 cfg.DATASET.OVERLAP = 0.5
+# ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
 cfg.DATASET.AMASS_VERSION = 'baseline'
+# ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
 cfg.LOSS = CN()
 cfg.LOSS.KP_2D_W = 60.
@@ -105,11 +107,13 @@ cfg.MODEL.TGRU.RESIDUAL = False
 cfg.MODEL.TGRU.HIDDEN_SIZE = 2048
 cfg.MODEL.TGRU.BIDIRECTIONAL = False
 
+# ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
 # Transformer model hyperparams
 cfg.MODEL.TFORM = CN()
 cfg.MODEL.TFORM.NUM_HEAD = 8
 cfg.MODEL.TFORM.NUM_LAYERS = 6
 cfg.MODEL.TFORM.DROPOUT = 0.1
+# ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
 
 def get_cfg_defaults():

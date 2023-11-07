@@ -23,9 +23,9 @@ from tqdm import tqdm
 
 from lib.core.config import VIBE_DB_DIR
 
-dict_keys = ['betas', 'dmpls', 'gender', 'mocap_frame_rate', 'poses', 'trans']
+# ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
-# dict_keys = ['betas', 'dmpls', 'gender', 'mocap_framerate', 'poses', 'trans']
+dict_keys = ['betas', 'dmpls', 'gender', 'mocap_frame_rate', 'poses', 'trans']
 
 # extract SMPL joints from SMPL-H model
 joints_to_use = np.array([
@@ -169,6 +169,8 @@ def read_seq_data(folder, nsubjects, fps):
             test_set[k] = v
 
     return train_set, test_set
+
+# ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

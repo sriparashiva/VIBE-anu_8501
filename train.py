@@ -93,6 +93,7 @@ def main(cfg):
     )
 
     # ========= Initialize networks, optimizers and lr_schedulers ========= #
+    # ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
     generator = VIBE(
         n_layers=cfg.MODEL.TGRU.NUM_LAYERS,
         batch_size=cfg.TRAIN.BATCH_SIZE,
@@ -107,6 +108,7 @@ def main(cfg):
         tform_n_layers=cfg.MODEL.TFORM.NUM_LAYERS,
         tform_dropout=cfg.MODEL.TFORM.DROPOUT,
     ).to(cfg.DEVICE)
+    # ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
     if cfg.TRAIN.PRETRAINED != '' and os.path.isfile(cfg.TRAIN.PRETRAINED):
         checkpoint = torch.load(cfg.TRAIN.PRETRAINED)
@@ -125,7 +127,8 @@ def main(cfg):
         momentum=cfg.TRAIN.GEN_MOMENTUM,
     )
     
-    
+    # ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
+    # Create instance of motion discriminator based on architecture type specified in config
     if cfg.TRAIN.MOT_DISCR.TYPE == 'gru':
         motion_discriminator = MotionDiscriminator(
             rnn_size=cfg.TRAIN.MOT_DISCR.HIDDEN_SIZE,
@@ -153,6 +156,8 @@ def main(cfg):
         print('Using Transformer Motion Discriminator')
     else:
         print(f'Invalid motion discriminator type: {cfg.TRAIN.MOT_DISCR.TYPE}')
+
+    # ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
     
     dis_motion_optimizer = get_optimizer(
         model=motion_discriminator,
@@ -162,6 +167,8 @@ def main(cfg):
         momentum=cfg.TRAIN.MOT_DISCR.MOMENTUM
     )
     
+    # ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
+    # Create instance of motion discriminator's LR scheduler based on architecture type specified in config
     if cfg.TRAIN.MOT_DISCR.TYPE == 'gru':
         motion_lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
         dis_motion_optimizer,
@@ -177,6 +184,8 @@ def main(cfg):
     else:
         print(f'Invalid motion discriminator type: {cfg.TRAIN.MOT_DISCR.TYPE}')
     
+
+    # Create instance of generator's LR scheduler based on architecture type specified in config
     if cfg.MODEL.TEMPORAL_TYPE == 'gru':
         lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
             gen_optimizer,
@@ -191,6 +200,7 @@ def main(cfg):
         print('Using NoamLR Scheduler for Temporal Encoder')
     else:
         print(f'Invalid temporal encoder type: {cfg.MODEL.TEMPORAL_TYPE}')
+
 
     # ========= Start Training ========= #
     Trainer(
@@ -215,6 +225,8 @@ def main(cfg):
         temporal_type=cfg.MODEL.TEMPORAL_TYPE,
         discriminator_type=cfg.TRAIN.MOT_DISCR.TYPE
     ).fit()
+
+    # ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
 
 if __name__ == '__main__':

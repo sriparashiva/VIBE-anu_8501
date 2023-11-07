@@ -36,6 +36,7 @@ logger = logging.getLogger(__name__)
 
 
 class Trainer():
+    # ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
     def __init__(
             self,
             data_loaders,
@@ -60,6 +61,7 @@ class Trainer():
             temporal_type='gru',
             discriminator_type='gru',
     ):
+        # ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
         # Prepare dataloaders
         self.train_2d_loader, self.train_3d_loader, self.disc_motion_loader, self.valid_loader = data_loaders
@@ -205,7 +207,9 @@ class Trainer():
             self.gen_optimizer.zero_grad()
             gen_loss.backward()
             self.gen_optimizer.step()
+            # ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
             if self.temporal_type == 'transformer' and self.lr_scheduler is not None:
+                # If lr scheduler used is NOAM scheduler, then step should be called after every batch
                 self.lr_scheduler.step()
 
             if self.train_global_step % self.dis_motion_update_steps == 0:
@@ -214,6 +218,7 @@ class Trainer():
                 self.dis_motion_optimizer.step()
                 if self.discriminator_type == 'transformer' and self.motion_lr_scheduler is not None:
                     self.motion_lr_scheduler.step()
+            # ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
             # =======>
 
             # <======= Log training info
@@ -328,10 +333,10 @@ class Trainer():
             self.validate()
             performance = self.evaluate()
             
+            # ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
             # Update LR based on the temporal_type
             if self.temporal_type == 'transformer':
                 # If NoamLR is used, then step should be called after each batch update
-                # Assuming NoamLR step was called inside the train() for each batch
                 # Therefore, no need to call step() here as it should be handled per batch
                 pass
             else:
@@ -350,8 +355,7 @@ class Trainer():
                 if self.motion_lr_scheduler is not None:
                     self.motion_lr_scheduler.step(performance)
 
-            # if self.motion_lr_scheduler is not None:
-            #     self.motion_lr_scheduler.step(performance)
+            # ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
             # log the learning rate
             for param_group in self.gen_optimizer.param_groups:

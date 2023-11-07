@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader
 
 def main(cfg):
     print('...Evaluating on 3DPW test set...')
-    
+    # ========= START: Customized code by ENGN8501/COMP8539 Project Team ========= #
     model = VIBE(
         n_layers=cfg.MODEL.TGRU.NUM_LAYERS,
         batch_size=cfg.TRAIN.BATCH_SIZE,
@@ -25,6 +25,7 @@ def main(cfg):
         tform_n_layers=cfg.MODEL.TFORM.NUM_LAYERS,
         tform_dropout=cfg.MODEL.TFORM.DROPOUT,
     ).to(cfg.DEVICE)
+    # ========= END: Customized code by ENGN8501/COMP8539 Project Team ========= #
 
     if cfg.TRAIN.PRETRAINED != '' and os.path.isfile(cfg.TRAIN.PRETRAINED):
         checkpoint = torch.load(cfg.TRAIN.PRETRAINED)
