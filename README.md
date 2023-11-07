@@ -3,6 +3,14 @@
 ## Overview
 This project is an extension of the original VIBE (Video Inference for Human Body Pose and Shape Estimation) paper by Kocabas et al. (2020). Our implementation seeks to improve upon the VIBE architecture by integrating transformer networks for temporal encoding and motion discrimination, and by utilizing an expanded training dataset. The goal is to refine 3D human pose estimation in videos, leveraging the power of transformers to capture complex temporal dependencies.
 
+## Authors
+
+This project is a collaborative effort by the following contributors:
+
+- Rohit Mistry (U7034818)
+- Lewis Aston (U7056676)
+- Dian Jiao (U6504904)
+
 Original Paper: Kocabas, M., Athanasiou, N., & Black, M. J. (2020). VIBE: Video Inference for Human Body Pose and Shape Estimation. CVPR.
 
 <p float="center">
