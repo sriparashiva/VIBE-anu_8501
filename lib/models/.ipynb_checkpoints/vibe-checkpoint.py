@@ -269,41 +269,28 @@ class VIBE(nn.Module):
 
         self.seqlen = seqlen
         self.batch_size = batch_size
+        self.temporal_type = temporal_type
         
-        # self.encoder = TemporalEncoder(
-        #         n_layers=n_layers,
-        #         hidden_size=hidden_size,
-        #         bidirectional=bidirectional,
-        #         add_linear=add_linear,
-        #         use_residual=use_residual,
-        #     )
-        
-        self.encoder_transformer = TemporalEncoderTransformer(
+        if temporal_type == 'gru':
+            self.encoder = TemporalEncoder(
+                n_layers=n_layers,
+                hidden_size=hidden_size,
+                bidirectional=bidirectional,
+                add_linear=add_linear,
+                use_residual=use_residual,
+            )
+            print('Using GRU encoder for Temporal Encoder')
+        elif temporal_type == 'transformer':
+            self.encoder_transformer = TemporalEncoderTransformer(
                 d_model=2048,
                 nhead=nhead, 
                 num_encoder_layers=tform_n_layers,
                 seqlen=seqlen,
                 dropout=tform_dropout
             )
-        
-        # if temporal_type == 'gru':
-        #     self.encoder = TemporalEncoder(
-        #         n_layers=n_layers,
-        #         hidden_size=hidden_size,
-        #         bidirectional=bidirectional,
-        #         add_linear=add_linear,
-        #         use_residual=use_residual,
-        #     )
-        # elif temporal_type == 'transformer':
-        #     self.encoder_transformer = TemporalEncoderTransformer(
-        #         d_model=2048,
-        #         nhead=nhead, 
-        #         num_encoder_layers=tform_n_layers,
-        #         seqlen=seqlen,
-        #         dropout=tform_dropout
-        #     )
-        # else:
-        #     print(f'Invalid temporal model selected: {temporal_type}')
+            print('Using Transformer encoder for Temporal Encoder')
+        else:
+            print(f'Invalid temporal model selected: {temporal_type}')
 
         # regressor can predict cam, pose and shape params in an iterative way
         self.regressor = Regressor()
@@ -319,10 +306,12 @@ class VIBE(nn.Module):
         
         # input size NTF
         batch_size, seqlen = input.shape[:2]
-
-        # feature = self.encoder(input)
-        feature = self.encoder_transformer(input)
         
+        
+        if self.temporal_type == 'gru':
+            feature = self.encoder(input)
+        elif self.temporal_type == 'transformer':
+            feature = self.encoder_transformer(input)
         
         feature = feature.reshape(-1, feature.size(-1))
 
@@ -358,6 +347,7 @@ class VIBE_Demo(nn.Module):
 
         self.seqlen = seqlen
         self.batch_size = batch_size
+        self.temporal_type = temporal_type
 
         if temporal_type == 'gru':
             self.encoder = TemporalEncoder(
@@ -367,14 +357,16 @@ class VIBE_Demo(nn.Module):
                 add_linear=add_linear,
                 use_residual=use_residual,
             )
+            print('Using GRU encoder for Temporal Encoder')
         elif temporal_type == 'transformer':
-            self.encoder = TemporalEncoderTransformer(
+            self.encoder_transformer = TemporalEncoderTransformer(
                 d_model=2048,
                 nhead=nhead, 
                 num_encoder_layers=tform_n_layers,
                 seqlen=seqlen,
                 dropout=tform_dropout
             )
+            print('Using Transformer encoder for Temporal Encoder')
         else:
             print(f'Invalid temporal model selected: {temporal_type}')
 
@@ -399,7 +391,10 @@ class VIBE_Demo(nn.Module):
         feature = self.hmr.feature_extractor(input.reshape(-1, nc, h, w))
 
         feature = feature.reshape(batch_size, seqlen, -1)
-        feature = self.encoder(input)
+        if self.temporal_type == 'gru':
+            feature = self.encoder(input)
+        elif self.temporal_type == 'transformer':
+            feature = self.encoder_transformer(input)
         feature = feature.reshape(-1, feature.size(-1))
 
         smpl_output = self.regressor(feature, J_regressor=J_regressor)

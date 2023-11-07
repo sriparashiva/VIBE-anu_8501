@@ -24,9 +24,9 @@ from lib.core.config import VIBE_DB_DIR
 from lib.data_utils.img_utils import split_into_chunks
 
 class AMASS(Dataset):
-    def __init__(self, seqlen):
+    def __init__(self, seqlen, amass_version='baseline'):
         self.seqlen = seqlen
-
+        self.amass_version = amass_version
         self.stride = seqlen
 
         self.db = self.load_db()
@@ -41,7 +41,12 @@ class AMASS(Dataset):
         return self.get_single_item(index)
 
     def load_db(self):
-        db_file = osp.join(VIBE_DB_DIR, 'amass_db.pt')
+        if self.amass_version == 'baseline':
+            db_file = osp.join(VIBE_DB_DIR, 'amass_baseline_db.pt')
+            print(f'Using Baseline AMASS Dataset')
+        else:
+            db_file = osp.join(VIBE_DB_DIR, 'amass_updated_db.pt')
+            print(f'Using Updated AMASS Dataset')
         db = joblib.load(db_file)
         return db
 

@@ -4,8 +4,9 @@ __pycache__/
 vibe-env/
 output/
 *.mp4
-results
 **/__pycache__
 **/__MACOSX
 run_demo.sh
 run_singularity.sh
+model_cache
+*.pth.tar

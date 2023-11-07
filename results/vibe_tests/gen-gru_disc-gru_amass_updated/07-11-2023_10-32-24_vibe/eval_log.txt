@@ -1,0 +1,16 @@
+Namespace(cfg='configs/config.yaml')
+
+...Evaluating on 3DPW test set...
+Using GRU encoder for Temporal Encoder
+WARNING: You are using a SMPL model, with only 10 shape coefficients.
+=> loaded pretrained model from 'data/vibe_data/spin_model_checkpoint.pth.tar'
+==> Loaded pretrained model from results/vibe_tests/gen-gru_disc-gru_amass_updated/07-11-2023_10-32-24_vibe/model_best.pth.tar...
+Performance on 3DPW test set 59.732940047979355
+3DPW Dataset overlap ratio:  0.0
+Loading 3dpw from: data/vibe_db/3dpw_test_db.pt
+Loaded 3dpw dataset from data/vibe_db/3dpw_test_db.pt
+3dpw - number of dataset objects 2144
+Validation |################################| (67/67) | batch: 98.89ms | Total: 0:00:09 | ETA: 0:00:01
+Evaluating on 34304 number of poses...
+WARNING: You are using a SMPL model, with only 10 shape coefficients.
+MPJPE: 91.2920, PA-MPJPE: 55.5521, PVE: 108.0769, ACCEL: 27.5020, ACCEL_ERR: 28.3556,

@@ -1,0 +1,177 @@
+2023-11-07 10:32:24,907 GPU name -> Tesla PG500-216
+2023-11-07 10:32:24,907 GPU feat -> _CudaDeviceProperties(name='Tesla PG500-216', major=7, minor=0, total_memory=32510MB, multi_processor_count=72)
+2023-11-07 10:32:24,908 {'CUDNN': CfgNode({'BENCHMARK': True, 'DETERMINISTIC': False, 'ENABLED': True}),
+ 'DATASET': CfgNode({'SEQLEN': 16, 'OVERLAP': 0.5, 'AMASS_VERSION': 'updated'}),
+ 'DEBUG': False,
+ 'DEBUG_FREQ': 5,
+ 'DEVICE': 'cuda',
+ 'EXP_NAME': 'vibe',
+ 'LOGDIR': 'results/vibe_tests/gen-gru_disc-gru_amass_updated/07-11-2023_10-32-24_vibe',
+ 'LOSS': {'D_MOTION_LOSS_W': 0.5,
+          'KP_2D_W': 300.0,
+          'KP_3D_W': 300.0,
+          'POSE_W': 60.0,
+          'SHAPE_W': 0.06},
+ 'MODEL': {'TEMPORAL_TYPE': 'gru',
+           'TFORM': CfgNode({'NUM_HEAD': 4, 'NUM_LAYERS': 2, 'DROPOUT': 0.3}),
+           'TGRU': {'ADD_LINEAR': True,
+                    'BIDIRECTIONAL': False,
+                    'HIDDEN_SIZE': 1024,
+                    'NUM_LAYERS': 2,
+                    'RESIDUAL': True}},
+ 'NUM_WORKERS': 8,
+ 'OUTPUT_DIR': 'results/vibe_tests/gen-gru_disc-gru_amass_updated',
+ 'SEED_VALUE': -1,
+ 'TRAIN': {'BATCH_SIZE': 32,
+           'DATASETS_2D': ['Insta', 'PennAction'],
+           'DATASETS_3D': ['ThreeDPW', 'MPII3D'],
+           'DATASET_EVAL': 'ThreeDPW',
+           'DATA_2D_RATIO': 0.6,
+           'END_EPOCH': 30,
+           'GEN_LR': 5e-05,
+           'GEN_MOMENTUM': 0.9,
+           'GEN_OPTIM': 'Adam',
+           'GEN_WD': 0.0,
+           'LR_PATIENCE': 5,
+           'MOT_DISCR': {'ATT': {'DROPOUT': 0.2,
+                                 'LAYERS': 3,
+                                 'SIZE': 1024},
+                         'FEATURE_POOL': 'attention',
+                         'HIDDEN_SIZE': 1024,
+                         'LR': 0.0001,
+                         'MOMENTUM': 0.9,
+                         'NUM_LAYERS': 2,
+                         'OPTIM': 'Adam',
+                         'TYPE': 'gru',
+                         'UPDATE_STEPS': 1,
+                         'WD': 0.0001},
+           'NUM_ITERS_PER_EPOCH': 500,
+           'PRETRAINED': '',
+           'PRETRAINED_REGRESSOR': 'data/vibe_data/spin_model_checkpoint.pth.tar',
+           'RESUME': '',
+           'START_EPOCH': 0}}
+2023-11-07 10:32:55,310 => no checkpoint found at ''
+2023-11-07 10:33:35,721 (500/500) | Total: 0:00:40 | ETA: 0:00:01 | loss: 4.9305 | loss_kp_2d: 2.11 | loss_kp_3d: 1.07 | e_m_disc_loss: 0.25 | d_m_disc_real: 0.10 | d_m_disc_fake: 0.07 | d_m_disc_loss: 0.16 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:33:41,114 (20/20) | batch: 49.92ms | Total: 0:00:04 | ETA: 0:00:01
+2023-11-07 10:33:47,393 Epoch 0, MPJPE: 99.4221, PA-MPJPE: 65.5252, ACCEL: 33.2315, PVE: 123.1549, ACCEL_ERR: 34.3339,
+2023-11-07 10:33:47,487 Epoch 1 performance: 65.5252
+2023-11-07 10:33:50,454 Best performance achived, saving it!
+2023-11-07 10:34:33,775 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.9879 | loss_kp_2d: 2.22 | loss_kp_3d: 2.13 | e_m_disc_loss: 0.21 | d_m_disc_real: 0.12 | d_m_disc_fake: 0.08 | d_m_disc_loss: 0.19 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:34:40,005 (20/20) | batch: 58.05ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:34:45,792 Epoch 1, MPJPE: 122.6626, PA-MPJPE: 76.6409, ACCEL: 40.9900, PVE: 149.9393, ACCEL_ERR: 41.9937,
+2023-11-07 10:34:45,885 Epoch 2 performance: 76.6409
+2023-11-07 10:35:29,882 (500/500) | Total: 0:00:40 | ETA: 0:00:01 | loss: 3.8822 | loss_kp_2d: 1.12 | loss_kp_3d: 0.88 | e_m_disc_loss: 0.24 | d_m_disc_real: 0.07 | d_m_disc_fake: 0.08 | d_m_disc_loss: 0.15 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:35:36,246 (20/20) | batch: 59.12ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:35:41,491 Epoch 2, MPJPE: 98.1295, PA-MPJPE: 63.3323, ACCEL: 33.8122, PVE: 119.0440, ACCEL_ERR: 34.8817,
+2023-11-07 10:35:41,564 Epoch 3 performance: 63.3323
+2023-11-07 10:35:43,539 Best performance achived, saving it!
+2023-11-07 10:36:25,142 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.6828 | loss_kp_2d: 1.84 | loss_kp_3d: 1.29 | loss_shape: 0.03 | loss_pose: 0.56 | e_m_disc_loss: 0.33 | d_m_disc_real: 0.11 | d_m_disc_fake: 0.10 | d_m_disc_loss: 0.21 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 10:36:31,466 (20/20) | batch: 58.68ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:36:37,004 Epoch 3, MPJPE: 116.9847, PA-MPJPE: 74.0591, ACCEL: 39.6027, PVE: 140.3724, ACCEL_ERR: 40.6519,
+2023-11-07 10:36:37,080 Epoch 4 performance: 74.0591
+2023-11-07 10:37:19,908 (500/500) | Total: 0:00:40 | ETA: 0:00:01 | loss: 3.7406 | loss_kp_2d: 1.80 | loss_kp_3d: 0.83 | e_m_disc_loss: 0.29 | d_m_disc_real: 0.06 | d_m_disc_fake: 0.05 | d_m_disc_loss: 0.12 | data: 0.02 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.09
+2023-11-07 10:37:25,866 (20/20) | batch: 54.95ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:37:31,186 Epoch 4, MPJPE: 100.1906, PA-MPJPE: 65.4218, ACCEL: 34.4295, PVE: 122.4479, ACCEL_ERR: 35.4831,
+2023-11-07 10:37:31,284 Epoch 5 performance: 65.4218
+2023-11-07 10:38:12,521 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.4543 | loss_kp_2d: 1.74 | loss_kp_3d: 1.37 | e_m_disc_loss: 0.17 | d_m_disc_real: 0.11 | d_m_disc_fake: 0.11 | d_m_disc_loss: 0.22 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 10:38:18,528 (20/20) | batch: 55.39ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:38:23,943 Epoch 5, MPJPE: 101.4223, PA-MPJPE: 67.9978, ACCEL: 35.3658, PVE: 122.4350, ACCEL_ERR: 36.4373,
+2023-11-07 10:38:24,066 Epoch 6 performance: 67.9978
+2023-11-07 10:39:05,969 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.5983 | loss_kp_2d: 1.31 | loss_kp_3d: 0.79 | e_m_disc_loss: 0.19 | d_m_disc_real: 0.10 | d_m_disc_fake: 0.10 | d_m_disc_loss: 0.20 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:39:12,227 (20/20) | batch: 58.13ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:39:17,866 Epoch 6, MPJPE: 92.2027, PA-MPJPE: 61.5112, ACCEL: 31.4831, PVE: 113.8282, ACCEL_ERR: 32.6284,
+2023-11-07 10:39:17,958 Epoch 7 performance: 61.5112
+2023-11-07 10:39:19,988 Best performance achived, saving it!
+2023-11-07 10:40:01,526 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.4168 | loss_kp_2d: 2.24 | loss_kp_3d: 1.07 | e_m_disc_loss: 0.20 | d_m_disc_real: 0.10 | d_m_disc_fake: 0.11 | d_m_disc_loss: 0.21 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:40:07,764 (20/20) | batch: 57.74ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:40:13,116 Epoch 7, MPJPE: 104.7108, PA-MPJPE: 70.7832, ACCEL: 34.8145, PVE: 128.3989, ACCEL_ERR: 35.9794,
+2023-11-07 10:40:13,221 Epoch 8 performance: 70.7832
+2023-11-07 10:40:55,499 (500/500) | Total: 0:00:40 | ETA: 0:00:01 | loss: 3.4736 | loss_kp_2d: 2.56 | loss_kp_3d: 1.26 | e_m_disc_loss: 0.18 | d_m_disc_real: 0.14 | d_m_disc_fake: 0.10 | d_m_disc_loss: 0.25 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 10:41:01,746 (20/20) | batch: 57.7ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:41:06,886 Epoch 8, MPJPE: 88.0078, PA-MPJPE: 59.7329, ACCEL: 31.5997, PVE: 106.4851, ACCEL_ERR: 32.6736,
+2023-11-07 10:41:06,974 Epoch 9 performance: 59.7329
+2023-11-07 10:41:08,759 Best performance achived, saving it!
+2023-11-07 10:41:53,877 (500/500) | Total: 0:00:43 | ETA: 0:00:01 | loss: 3.4530 | loss_kp_2d: 2.19 | loss_kp_3d: 1.35 | loss_shape: 0.09 | loss_pose: 2.24 | e_m_disc_loss: 0.17 | d_m_disc_real: 0.06 | d_m_disc_fake: 0.11 | d_m_disc_loss: 0.17 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 10:42:00,310 (20/20) | batch: 59.44ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:42:05,782 Epoch 9, MPJPE: 100.2108, PA-MPJPE: 67.1957, ACCEL: 31.0432, PVE: 121.6991, ACCEL_ERR: 32.3035,
+2023-11-07 10:42:05,873 Epoch 10 performance: 67.1957
+2023-11-07 10:42:48,263 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.3691 | loss_kp_2d: 1.77 | loss_kp_3d: 2.63 | e_m_disc_loss: 0.27 | d_m_disc_real: 0.09 | d_m_disc_fake: 0.07 | d_m_disc_loss: 0.16 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:42:54,664 (20/20) | batch: 59.16ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:42:59,938 Epoch 10, MPJPE: 107.6672, PA-MPJPE: 72.0989, ACCEL: 34.6553, PVE: 133.8816, ACCEL_ERR: 35.7679,
+2023-11-07 10:43:00,039 Epoch 11 performance: 72.0989
+2023-11-07 10:43:43,654 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.2065 | loss_kp_2d: 0.92 | loss_kp_3d: 0.84 | e_m_disc_loss: 0.17 | d_m_disc_real: 0.09 | d_m_disc_fake: 0.15 | d_m_disc_loss: 0.24 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:43:50,002 (20/20) | batch: 58.64ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:43:56,393 Epoch 11, MPJPE: 101.8325, PA-MPJPE: 67.4577, ACCEL: 34.4810, PVE: 124.4694, ACCEL_ERR: 35.5666,
+2023-11-07 10:43:56,485 Epoch 12 performance: 67.4577
+2023-11-07 10:44:37,703 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.3737 | loss_kp_2d: 2.12 | loss_kp_3d: 1.27 | loss_shape: 0.01 | loss_pose: 1.01 | e_m_disc_loss: 0.22 | d_m_disc_real: 0.13 | d_m_disc_fake: 0.08 | d_m_disc_loss: 0.21 | data: 0.07 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.14
+2023-11-07 10:44:43,995 (20/20) | batch: 58.12ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:44:49,315 Epoch 12, MPJPE: 90.9227, PA-MPJPE: 61.8304, ACCEL: 29.0539, PVE: 108.2349, ACCEL_ERR: 30.3372,
+2023-11-07 10:44:49,395 Epoch 13 performance: 61.8304
+2023-11-07 10:45:30,994 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.8169 | loss_kp_2d: 1.63 | loss_kp_3d: 0.83 | e_m_disc_loss: 0.22 | d_m_disc_real: 0.08 | d_m_disc_fake: 0.08 | d_m_disc_loss: 0.15 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:45:37,499 (20/20) | batch: 60.01ms | Total: 0:00:06 | ETA: 0:00:01
+2023-11-07 10:45:42,931 Epoch 13, MPJPE: 109.1367, PA-MPJPE: 72.6567, ACCEL: 35.5331, PVE: 128.8907, ACCEL_ERR: 36.6571,
+2023-11-07 10:45:43,022 Epoch 14 performance: 72.6567
+2023-11-07 10:46:24,075 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.3307 | loss_kp_2d: 1.20 | loss_kp_3d: 0.64 | e_m_disc_loss: 0.29 | d_m_disc_real: 0.06 | d_m_disc_fake: 0.05 | d_m_disc_loss: 0.11 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:46:30,331 (20/20) | batch: 57.64ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:46:35,515 Epoch 14, MPJPE: 102.5150, PA-MPJPE: 67.5499, ACCEL: 34.1612, PVE: 122.9830, ACCEL_ERR: 35.2637,
+2023-11-07 10:46:35,596 Epoch 15 performance: 67.5499
+2023-11-07 10:47:17,802 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.0771 | loss_kp_2d: 0.64 | loss_kp_3d: 0.72 | e_m_disc_loss: 0.18 | d_m_disc_real: 0.08 | d_m_disc_fake: 0.10 | d_m_disc_loss: 0.19 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:47:24,094 (20/20) | batch: 57.81ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:47:29,675 Epoch 15, MPJPE: 97.4278, PA-MPJPE: 65.2090, ACCEL: 33.2778, PVE: 117.3000, ACCEL_ERR: 34.4004,
+2023-11-07 10:47:29,757 Epoch 16 performance: 65.2090
+2023-11-07 10:48:11,381 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.0818 | loss_kp_2d: 1.12 | loss_kp_3d: 1.46 | e_m_disc_loss: 0.25 | d_m_disc_real: 0.09 | d_m_disc_fake: 0.07 | d_m_disc_loss: 0.16 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:48:17,566 (20/20) | batch: 56.92ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:48:22,834 Epoch 16, MPJPE: 101.3806, PA-MPJPE: 67.5033, ACCEL: 34.3055, PVE: 122.3841, ACCEL_ERR: 35.4323,
+2023-11-07 10:48:22,913 Epoch 17 performance: 67.5033
+2023-11-07 10:49:08,368 (500/500) | Total: 0:00:43 | ETA: 0:00:01 | loss: 2.9887 | loss_kp_2d: 0.96 | loss_kp_3d: 1.21 | e_m_disc_loss: 0.21 | d_m_disc_real: 0.09 | d_m_disc_fake: 0.11 | d_m_disc_loss: 0.20 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:49:14,696 (20/20) | batch: 58.25ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:49:19,697 Epoch 17, MPJPE: 100.7541, PA-MPJPE: 67.1860, ACCEL: 33.9401, PVE: 122.2228, ACCEL_ERR: 35.0694,
+2023-11-07 10:49:19,801 Epoch 18 performance: 67.1860
+2023-11-07 10:50:05,815 (500/500) | Total: 0:00:43 | ETA: 0:00:01 | loss: 3.0678 | loss_kp_2d: 1.38 | loss_kp_3d: 0.97 | loss_shape: 0.06 | loss_pose: 1.04 | e_m_disc_loss: 0.20 | d_m_disc_real: 0.08 | d_m_disc_fake: 0.10 | d_m_disc_loss: 0.18 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 10:50:12,270 (20/20) | batch: 59.46ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:50:17,545 Epoch 18, MPJPE: 102.0349, PA-MPJPE: 68.3559, ACCEL: 34.3230, PVE: 123.7402, ACCEL_ERR: 35.4604,
+2023-11-07 10:50:17,628 Epoch 19 performance: 68.3559
+2023-11-07 10:50:59,007 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 2.9444 | loss_kp_2d: 1.16 | loss_kp_3d: 0.73 | e_m_disc_loss: 0.22 | d_m_disc_real: 0.09 | d_m_disc_fake: 0.09 | d_m_disc_loss: 0.18 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 10:51:05,406 (20/20) | batch: 58.93ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:51:10,723 Epoch 19, MPJPE: 100.1256, PA-MPJPE: 67.3120, ACCEL: 33.8649, PVE: 121.5461, ACCEL_ERR: 35.0018,
+2023-11-07 10:51:10,809 Epoch 20 performance: 67.3120
+2023-11-07 10:51:52,346 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.0297 | loss_kp_2d: 0.95 | loss_kp_3d: 1.03 | loss_shape: 0.07 | loss_pose: 1.83 | e_m_disc_loss: 0.25 | d_m_disc_real: 0.08 | d_m_disc_fake: 0.07 | d_m_disc_loss: 0.15 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 10:51:58,842 (20/20) | batch: 59.91ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:52:04,304 Epoch 20, MPJPE: 100.3454, PA-MPJPE: 67.8263, ACCEL: 34.2777, PVE: 122.1927, ACCEL_ERR: 35.4124,
+2023-11-07 10:52:04,381 Epoch 21 performance: 67.8263
+2023-11-07 10:52:46,701 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 2.9673 | loss_kp_2d: 0.84 | loss_kp_3d: 1.06 | e_m_disc_loss: 0.21 | d_m_disc_real: 0.07 | d_m_disc_fake: 0.10 | d_m_disc_loss: 0.17 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:52:52,970 (20/20) | batch: 57.95ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:52:58,277 Epoch 21, MPJPE: 101.5913, PA-MPJPE: 68.7993, ACCEL: 34.5525, PVE: 123.7976, ACCEL_ERR: 35.6943,
+2023-11-07 10:52:58,380 Epoch 22 performance: 68.7993
+2023-11-07 10:53:39,826 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.0318 | loss_kp_2d: 1.23 | loss_kp_3d: 1.03 | e_m_disc_loss: 0.24 | d_m_disc_real: 0.11 | d_m_disc_fake: 0.09 | d_m_disc_loss: 0.20 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:53:46,295 (20/20) | batch: 59.58ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:53:51,539 Epoch 22, MPJPE: 101.6992, PA-MPJPE: 68.7942, ACCEL: 34.5233, PVE: 123.9924, ACCEL_ERR: 35.6694,
+2023-11-07 10:53:51,616 Epoch 23 performance: 68.7942
+2023-11-07 10:54:32,453 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.0519 | loss_kp_2d: 0.77 | loss_kp_3d: 0.83 | e_m_disc_loss: 0.23 | d_m_disc_real: 0.09 | d_m_disc_fake: 0.09 | d_m_disc_loss: 0.19 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:54:38,773 (20/20) | batch: 58.32ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:54:44,476 Epoch 23, MPJPE: 98.9314, PA-MPJPE: 66.9356, ACCEL: 33.8160, PVE: 120.6982, ACCEL_ERR: 34.9589,
+2023-11-07 10:54:44,550 Epoch 24 performance: 66.9356
+2023-11-07 10:55:28,838 (500/500) | Total: 0:00:43 | ETA: 0:00:01 | loss: 2.9369 | loss_kp_2d: 1.43 | loss_kp_3d: 1.17 | e_m_disc_loss: 0.25 | d_m_disc_real: 0.09 | d_m_disc_fake: 0.08 | d_m_disc_loss: 0.17 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:55:35,436 (20/20) | batch: 60.85ms | Total: 0:00:06 | ETA: 0:00:01
+2023-11-07 10:55:40,525 Epoch 24, MPJPE: 100.6239, PA-MPJPE: 68.0836, ACCEL: 34.1420, PVE: 122.6335, ACCEL_ERR: 35.2926,
+2023-11-07 10:55:40,624 Epoch 25 performance: 68.0836
+2023-11-07 10:56:22,175 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 2.9639 | loss_kp_2d: 1.17 | loss_kp_3d: 0.60 | e_m_disc_loss: 0.23 | d_m_disc_real: 0.08 | d_m_disc_fake: 0.09 | d_m_disc_loss: 0.17 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 10:56:28,567 (20/20) | batch: 58.81ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:56:33,603 Epoch 25, MPJPE: 99.0475, PA-MPJPE: 67.1504, ACCEL: 33.7983, PVE: 120.8038, ACCEL_ERR: 34.9475,
+2023-11-07 10:56:33,694 Epoch 26 performance: 67.1504
+2023-11-07 10:57:14,410 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.0004 | loss_kp_2d: 1.25 | loss_kp_3d: 0.57 | e_m_disc_loss: 0.28 | d_m_disc_real: 0.08 | d_m_disc_fake: 0.05 | d_m_disc_loss: 0.13 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:57:20,771 (20/20) | batch: 58.66ms | Total: 0:00:05 | ETA: 0:00:01
+2023-11-07 10:57:26,320 Epoch 26, MPJPE: 97.7114, PA-MPJPE: 66.2446, ACCEL: 33.5583, PVE: 119.1331, ACCEL_ERR: 34.7038,
+2023-11-07 10:57:26,404 Epoch 27 performance: 66.2446
+2023-11-07 10:58:07,375 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 3.0481 | loss_kp_2d: 0.92 | loss_kp_3d: 0.69 | loss_shape: 0.02 | loss_pose: 1.10 | e_m_disc_loss: 0.27 | d_m_disc_real: 0.09 | d_m_disc_fake: 0.06 | d_m_disc_loss: 0.15 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 10:58:13,927 (20/20) | batch: 60.36ms | Total: 0:00:06 | ETA: 0:00:01
+2023-11-07 10:58:19,114 Epoch 27, MPJPE: 97.7131, PA-MPJPE: 66.2592, ACCEL: 33.5544, PVE: 119.1280, ACCEL_ERR: 34.7003,
+2023-11-07 10:58:19,183 Epoch 28 performance: 66.2592
+2023-11-07 10:59:04,288 (500/500) | Total: 0:00:44 | ETA: 0:00:01 | loss: 3.0057 | loss_kp_2d: 0.86 | loss_kp_3d: 1.01 | e_m_disc_loss: 0.27 | d_m_disc_real: 0.09 | d_m_disc_fake: 0.06 | d_m_disc_loss: 0.15 | data: 0.01 | forward: 0.02 | loss: 0.00 | backward: 0.05 | batch: 0.08
+2023-11-07 10:59:10,967 (20/20) | batch: 61.71ms | Total: 0:00:06 | ETA: 0:00:01
+2023-11-07 10:59:16,298 Epoch 28, MPJPE: 97.7959, PA-MPJPE: 66.3208, ACCEL: 33.5792, PVE: 119.2294, ACCEL_ERR: 34.7249,
+2023-11-07 10:59:16,401 Epoch 29 performance: 66.3208
+2023-11-07 10:59:57,493 (500/500) | Total: 0:00:39 | ETA: 0:00:01 | loss: 2.9535 | loss_kp_2d: 0.88 | loss_kp_3d: 0.82 | loss_shape: 0.01 | loss_pose: 0.60 | e_m_disc_loss: 0.29 | d_m_disc_real: 0.10 | d_m_disc_fake: 0.06 | d_m_disc_loss: 0.15 | data: 0.01 | forward: 0.02 | loss: 0.01 | backward: 0.05 | batch: 0.08
+2023-11-07 11:00:04,298 (20/20) | batch: 62.26ms | Total: 0:00:06 | ETA: 0:00:01
+2023-11-07 11:00:09,617 Epoch 29, MPJPE: 98.0268, PA-MPJPE: 66.4939, ACCEL: 33.6210, PVE: 119.4963, ACCEL_ERR: 34.7675,
+2023-11-07 11:00:09,693 Epoch 30 performance: 66.4939

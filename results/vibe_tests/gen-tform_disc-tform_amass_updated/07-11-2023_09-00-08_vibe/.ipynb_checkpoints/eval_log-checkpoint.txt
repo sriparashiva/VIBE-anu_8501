@@ -1,0 +1,16 @@
+Namespace(cfg='configs/config.yaml')
+
+...Evaluating on 3DPW test set...
+Using Transformer encoder for Temporal Encoder
+WARNING: You are using a SMPL model, with only 10 shape coefficients.
+=> loaded pretrained model from 'data/vibe_data/spin_model_checkpoint.pth.tar'
+==> Loaded pretrained model from results/vibe_tests/final_test/07-11-2023_09-00-08_vibe/model_best.pth.tar...
+Performance on 3DPW test set 65.0961771607399
+3DPW Dataset overlap ratio:  0.0
+Loading 3dpw from: data/vibe_db/3dpw_test_db.pt
+Loaded 3dpw dataset from data/vibe_db/3dpw_test_db.pt
+3dpw - number of dataset objects 2144
+Validation |################################| (67/67) | batch: 102.3ms | Total: 0:00:10 | ETA: 0:00:01
+Evaluating on 34304 number of poses...
+WARNING: You are using a SMPL model, with only 10 shape coefficients.
+MPJPE: 104.7027, PA-MPJPE: 59.4259, PVE: 125.0943, ACCEL: 16.8924, ACCEL_ERR: 18.8253,

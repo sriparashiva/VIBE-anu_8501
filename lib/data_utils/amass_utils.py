@@ -46,6 +46,7 @@ all_sequences = [
     'DFaust_67', # extra dataset
     'EKUT',
     'Eyes_Japan_Dataset',
+    'GRAB', # extra dataset
     'HUMAN4D', # extra dataset
     'HumanEva',
     'KIT',
@@ -58,6 +59,7 @@ all_sequences = [
     'TCD_handMocap',
     'TotalCapture',
     'Transitions_mocap',
+    'WEIZMANN', # extra dataset
 ]
 
 def read_data(folder, sequences):

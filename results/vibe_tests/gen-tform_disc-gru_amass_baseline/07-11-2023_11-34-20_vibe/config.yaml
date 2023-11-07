@@ -1,0 +1,130 @@
+!!python/object/new:yacs.config.CfgNode
+dictitems:
+  CUDNN: !!python/object/new:yacs.config.CfgNode
+    dictitems:
+      BENCHMARK: true
+      DETERMINISTIC: false
+      ENABLED: true
+    state:
+      __deprecated_keys__: !!set {}
+      __immutable__: false
+      __new_allowed__: false
+      __renamed_keys__: {}
+  DATASET: !!python/object/new:yacs.config.CfgNode
+    dictitems:
+      AMASS_VERSION: baseline
+      OVERLAP: 0.5
+      SEQLEN: 16
+    state:
+      __deprecated_keys__: !!set {}
+      __immutable__: false
+      __new_allowed__: false
+      __renamed_keys__: {}
+  DEBUG: false
+  DEBUG_FREQ: 5
+  DEVICE: cuda
+  EXP_NAME: vibe
+  LOGDIR: results/vibe_tests/gen-tform_disc-gru_amass_baseline/07-11-2023_11-34-20_vibe
+  LOSS: !!python/object/new:yacs.config.CfgNode
+    dictitems:
+      D_MOTION_LOSS_W: 0.5
+      KP_2D_W: 300.0
+      KP_3D_W: 300.0
+      POSE_W: 60.0
+      SHAPE_W: 0.06
+    state:
+      __deprecated_keys__: !!set {}
+      __immutable__: false
+      __new_allowed__: false
+      __renamed_keys__: {}
+  MODEL: !!python/object/new:yacs.config.CfgNode
+    dictitems:
+      TEMPORAL_TYPE: transformer
+      TFORM: !!python/object/new:yacs.config.CfgNode
+        dictitems:
+          DROPOUT: 0.3
+          NUM_HEAD: 4
+          NUM_LAYERS: 2
+        state:
+          __deprecated_keys__: !!set {}
+          __immutable__: false
+          __new_allowed__: false
+          __renamed_keys__: {}
+      TGRU: !!python/object/new:yacs.config.CfgNode
+        dictitems:
+          ADD_LINEAR: true
+          BIDIRECTIONAL: false
+          HIDDEN_SIZE: 1024
+          NUM_LAYERS: 2
+          RESIDUAL: true
+        state:
+          __deprecated_keys__: !!set {}
+          __immutable__: false
+          __new_allowed__: false
+          __renamed_keys__: {}
+    state:
+      __deprecated_keys__: !!set {}
+      __immutable__: false
+      __new_allowed__: false
+      __renamed_keys__: {}
+  NUM_WORKERS: 8
+  OUTPUT_DIR: results/vibe_tests/gen-tform_disc-gru_amass_baseline
+  SEED_VALUE: -1
+  TRAIN: !!python/object/new:yacs.config.CfgNode
+    dictitems:
+      BATCH_SIZE: 32
+      DATASETS_2D:
+      - Insta
+      - PennAction
+      DATASETS_3D:
+      - ThreeDPW
+      - MPII3D
+      DATASET_EVAL: ThreeDPW
+      DATA_2D_RATIO: 0.6
+      END_EPOCH: 30
+      GEN_LR: 5.0e-05
+      GEN_MOMENTUM: 0.9
+      GEN_OPTIM: AdamW
+      GEN_WD: 0.0
+      LR_PATIENCE: 5
+      MOT_DISCR: !!python/object/new:yacs.config.CfgNode
+        dictitems:
+          ATT: !!python/object/new:yacs.config.CfgNode
+            dictitems:
+              DROPOUT: 0.2
+              LAYERS: 3
+              SIZE: 1024
+            state:
+              __deprecated_keys__: !!set {}
+              __immutable__: false
+              __new_allowed__: false
+              __renamed_keys__: {}
+          FEATURE_POOL: attention
+          HIDDEN_SIZE: 1024
+          LR: 0.0001
+          MOMENTUM: 0.9
+          NUM_LAYERS: 2
+          OPTIM: Adam
+          TYPE: gru
+          UPDATE_STEPS: 1
+          WD: 0.0001
+        state:
+          __deprecated_keys__: !!set {}
+          __immutable__: false
+          __new_allowed__: false
+          __renamed_keys__: {}
+      NUM_ITERS_PER_EPOCH: 500
+      PRETRAINED: ''
+      PRETRAINED_REGRESSOR: data/vibe_data/spin_model_checkpoint.pth.tar
+      RESUME: ''
+      START_EPOCH: 0
+    state:
+      __deprecated_keys__: !!set {}
+      __immutable__: false
+      __new_allowed__: false
+      __renamed_keys__: {}
+state:
+  __deprecated_keys__: !!set {}
+  __immutable__: false
+  __new_allowed__: false
+  __renamed_keys__: {}

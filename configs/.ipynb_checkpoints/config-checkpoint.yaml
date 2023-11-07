@@ -3,21 +3,23 @@ DEBUG_FREQ: 5
 LOGDIR: ''
 DEVICE: 'cuda'
 EXP_NAME: 'vibe'
-OUTPUT_DIR: 'results/vibe_tests/gt_mdt_noam'
+OUTPUT_DIR: 'results/vibe_tests/gen-tform_disc-tform_amass_baseline'
 NUM_WORKERS: 8
 SEED_VALUE: -1
 DATASET:
   SEQLEN: 16
+  # AMASS_VERSION Options: baseline | updated
+  AMASS_VERSION: 'baseline'
 LOSS:
   KP_2D_W: 300.0
   KP_3D_W: 300.0
   SHAPE_W: 0.06
   POSE_W: 60.0
-  D_MOTION_LOSS_W: 5.0
+  D_MOTION_LOSS_W: 0.5
 TRAIN:
   BATCH_SIZE: 32
   NUM_ITERS_PER_EPOCH: 500
-  PRETRAINED: ''
+  PRETRAINED: 'results/vibe_tests/gen-tform_disc-tform_amass_updated/07-11-2023_09-00-08_vibe/model_best.pth.tar'
   PRETRAINED_REGRESSOR: 'data/vibe_data/spin_model_checkpoint.pth.tar'
   RESUME: ''
   START_EPOCH: 0
@@ -61,6 +63,6 @@ MODEL:
     BIDIRECTIONAL: false
     HIDDEN_SIZE: 1024
   TFORM:
-    NUM_HEAD: 8
+    NUM_HEAD: 4
     NUM_LAYERS: 2
-    DROPOUT: 0.5
+    DROPOUT: 0.3

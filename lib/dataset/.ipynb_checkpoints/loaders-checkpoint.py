@@ -60,7 +60,7 @@ def get_data_loaders(cfg):
     )
 
     # ===== Motion Discriminator dataset =====
-    motion_disc_db = AMASS(seqlen=cfg.DATASET.SEQLEN)
+    motion_disc_db = AMASS(seqlen=cfg.DATASET.SEQLEN, amass_version=cfg.DATASET.AMASS_VERSION)
 
     motion_disc_loader = DataLoader(
         dataset=motion_disc_db,

@@ -1,2 +1,3 @@
 from .vibe import VIBE
 from .motion_discriminator import MotionDiscriminator
+from .motion_discriminator import MotionDiscriminator_Transformer
