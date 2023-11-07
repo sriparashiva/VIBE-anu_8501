@@ -49,31 +49,14 @@ git clone https://github.com/sriparashiva/VIBE-anu_8501.git
 cd VIBE-anu_8501
 ```
 
-### Creating an Environment from the environment.yml File
-Once Anaconda is installed, you can create a conda environment using the `environment.yml` file provided in the repository. This file contains all the necessary packages and their specific versions required for the project.
-
-1. Ensure that you are in the root directory of the cloned repository where the `environment.yml` file is located.
-2. Create the conda environment by running:
-
+Install the requirements using `virtualenv` or `conda`:
 ```bash
-conda env create -f environment.yml
+# pip
+source scripts/install_pip.sh
+
+# conda
+source scripts/install_conda.sh
 ```
-
-3. Activate the newly created environment:
-
-```bash
-conda activate your-env-name
-```
-
-Replace `your-env-name` with the name of the conda environment specified in the `environment.yml` file.
-
-4. Verify that the environment was set up correctly and all packages were installed:
-
-```bash
-conda list
-```
-
-You should see a list of all packages specified in the `environment.yml` file.
 
 ## Training
 Run the commands below to start training:
