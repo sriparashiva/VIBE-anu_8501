@@ -7,9 +7,9 @@ This project is an extension of the original VIBE (Video Inference for Human Bod
 
 This project is a collaborative effort by the following contributors:
 
-- Rohit Mistry (U7034818)
-- Lewis Aston (U7056676)
-- Dian Jiao (U6504904)
+- Rohit Mistry (u7034818@anu.edu.au)
+- Lewis Aston (u7056676@anu.edu.au)
+- Dian Jiao (u6504904@anu.edu.au)
 
 Original Paper: Kocabas, M., Athanasiou, N., & Black, M. J. (2020). VIBE: Video Inference for Human Body Pose and Shape Estimation. CVPR.
 
